@@ -1,0 +1,16 @@
+#login {
+  .jumbotron {
+    float: left;
+    width: 100%;
+  }
+
+  ul.login {
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+    li {
+      margin-left: 10px;
+      display: inline-block;
+    }
+  }
+}
