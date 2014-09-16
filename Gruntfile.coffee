@@ -14,7 +14,8 @@ module.exports = (grunt) ->
   grunt.registerTask 'test:karma', [ 'browserify:karma', 'karma:single' ]
   grunt.registerTask 'lint', [ 'coffeelint' ]
   grunt.registerTask 'build', [ 'clean', 'browserify:dist', 'copy' ]
-  grunt.registerTask 'server', [ 'clean', 'symlink', 'configureProxies:server', 'concurrent:dev' ]
+  grunt.registerTask 'server', [ 'clean', 'symlink', 'concurrent:dev' ]
+  grunt.registerTask 'proxyserv', [ 'configureProxies:server', 'connect' ]
 
 
   grunt.initConfig
@@ -23,13 +24,15 @@ module.exports = (grunt) ->
     connect:
       server:
         proxies: [
-          context : '/env' #[ '/api/', '/env', '/logout' ]
+          context : [ '/api/', '/env', '/logout', '/auth' ]
           host    : 'localhost'
           port    : 3000
+          forward : false
         ]
 
         options:
-          port       : 9000
+          port       : 3001
+          base       : '/dist'
           hostname   : 'localhost'
           keepalive  : true
           middleware : (connect, options) ->
@@ -46,7 +49,7 @@ module.exports = (grunt) ->
           'browserify:dev'
           'browserify:karmaDev'
           'karma:dev'
-          'connect'
+          'proxyserv'
         ]
 
 
