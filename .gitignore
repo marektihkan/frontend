@@ -2,3 +2,6 @@ node_modules
 .sass-cache
 app/vendor
 dist
+test/tmp/**
+app/vendor/**
+app/styles/*.css
