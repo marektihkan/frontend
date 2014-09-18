@@ -22,8 +22,8 @@ question.config [ '$stateProvider', ($stateProvider) ->
     return deffered.reject() unless id
     successCb = (questions) ->
       question = _.find questions, { id }
-      return deffered.resolve question if question
-      deffered.reject()
+      # If the question was not found use the first question availble
+      deffered.resolve question or _.first questions
     Question.list successCb, deffered.reject
     deffered.promise
 
