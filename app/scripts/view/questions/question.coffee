@@ -10,6 +10,7 @@ module.exports = question = angular.module 'testlab.view.question', [
   templates.name
   'classy'
   'ui.router'
+  'ngSanitize'
 ]
 
 question.config [ '$stateProvider', ($stateProvider) ->
@@ -38,6 +39,7 @@ QuestionController = question.classy.controller
   inject: [
     '$scope'
     '$state'
+    '$sce'
     'question'
     'Answer'
   ]
@@ -51,3 +53,6 @@ QuestionController = question.classy.controller
 
   submitAnswer: (question, answer) ->
     answer.$save id: question.id
+
+  allowHtml: (data) ->
+    @$sce.trustAsHtml data

@@ -20,6 +20,7 @@ module.exports = (config) ->
       './app/vendor/angular-resource/angular-resource.js'
       './app/vendor/angular-ui-router/release/angular-ui-router.js'
       './app/vendor/angular-classy/angular-classy.js'
+      './app/vendor/angular-sanitize/angular-sanitize.js'
 
       # Init the actual tests
       './test/tmp/test-bundle.js'

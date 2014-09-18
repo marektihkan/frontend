@@ -2,7 +2,7 @@
   <h2>{{ question.name }}</h2>
   <div class="col-md-12">
     <blockquote>
-      <p> {{ question.description }} </p>
+      <p data-ng-bind-html="question.description"></p>
     </blockquote>
   </div>
 
