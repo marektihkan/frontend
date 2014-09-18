@@ -10,7 +10,7 @@
   </li>
   <li class="step">
     <button
-      data-ng-disabled="!user || isFinished(user)"
+      data-ng-disabled="!user.id"
       data-ng-class="{ current: isActive('profile') }"
       data-ng-click="navigate('profile')"
       class="btn btn-link">
