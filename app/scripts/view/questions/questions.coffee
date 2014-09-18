@@ -59,4 +59,6 @@ QuestionsController = questions.classy.controller
     @user.$finish =>
       @$state.go 'result'
 
+  isActive: (id) ->
+    @$state.params.id == id
 
