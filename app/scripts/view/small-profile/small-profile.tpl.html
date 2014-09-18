@@ -1,9 +1,15 @@
-<div data-ng-if='user && user.$resolved' id="small-profile">
-  <img data-ng-src="{{ user.avatar }}" alt="{{ user.avatar }}" class="pull-left avatar"/>
-  <section class="data">
-    <span class="name">{{ user.name }}</span>
-    <span class="email">{{ user.email }}</span>
-    <a data-ng-if="user.admin" class="btn btn-xs btn-info" data-ui-sref="admin">Admin console</a>
-    <a class="logout btn btn-xs btn-default" href="/logout">Logout</a>
+<section data-ng-if='user && user.$resolved' id="small-profile">
+  <section class="main colored">
+    <img data-ng-src="{{ user.avatar }}" alt="{{ user.avatar }}" class="pull-left avatar"/>
+    <section class="data">
+      <span class="name">{{ user.name }}</span>
+      <span class="email">{{ user.email }}</span>
+      <a class="logout btn btn-xs btn-default" href="/logout">Logout</a>
+    </section>
   </section>
-</div>
+  <section class="admin colored">
+    <a data-ng-if="user.admin" class="btn btn-xs btn-info" data-ui-sref="admin">
+      Admin console
+    </a>
+  </section>
+</section>
