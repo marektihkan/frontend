@@ -60,5 +60,5 @@ QuestionsController = questions.classy.controller
       @$state.go 'result'
 
   isActive: (id) ->
-    @$state.params.id == id
+    @$state.params.id is id
 
