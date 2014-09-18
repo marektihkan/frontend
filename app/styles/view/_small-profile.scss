@@ -18,11 +18,19 @@
     a {
       width: 100%;
     }
+    .list-group {
+      margin-bottom: 0;
+      .list-group-item {
+        border: 0;
+        background: initial;
+      }
+    }
   }
 
   .main {
     $height: 80px;
     height: $height;
+
     .avatar{
       max-width: $height;
       max-height: $height;

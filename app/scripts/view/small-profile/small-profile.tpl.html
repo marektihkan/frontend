@@ -7,9 +7,13 @@
       <a class="logout btn btn-xs btn-default" href="/logout">Logout</a>
     </section>
   </section>
-  <section class="admin colored">
-    <a data-ng-if="user.admin" class="btn btn-xs btn-info" data-ui-sref="admin">
-      Admin console
-    </a>
+  <section data-ng-if="user.admin" class="admin colored">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="badge">{{ overview.finished }}</span>
+        tests finished
+      </li>
+    </ul>
+    <a class="btn btn-xs btn-info" data-ui-sref="admin"> Admin console </a>
   </section>
 </section>
