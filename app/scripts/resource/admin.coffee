@@ -6,4 +6,7 @@ admin.factory 'Admin', [ '$resource', ($resource) ->
       isArray: true
       url: '/api/admin/users'
       cache: false
+
+    overview:
+      url: '/api/admin/overview'
 ]
