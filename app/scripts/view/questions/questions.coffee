@@ -61,4 +61,3 @@ QuestionsController = questions.classy.controller
 
   isActive: (id) ->
     @$state.params.id is id
-

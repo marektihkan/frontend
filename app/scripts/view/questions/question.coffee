@@ -33,6 +33,7 @@ question.config [ '$stateProvider', ($stateProvider) ->
       controller: QuestionController
       resolve:
         question: [ 'Question', '$q', '$stateParams', questionResolve ]
+        questions: [ 'Question', (Question) -> Question.list() ]
 ]
 
 QuestionController = question.classy.controller
@@ -41,6 +42,7 @@ QuestionController = question.classy.controller
     '$state'
     '$sce'
     'question'
+    'questions'
     'Answer'
   ]
 
@@ -48,8 +50,15 @@ QuestionController = question.classy.controller
     @$scope.question = @question
     @$scope.answer   = @Answer.get id: @$state.params.id
 
+  goToNextQuestion: (id) ->
+    index  = _.findIndex @questions, { id }
+    nextId = @questions[index + 1]?.id
+    return unless nextId
+    @$state.go 'question.id', id: nextId
+
   submitAnswer: (question, answer) ->
-    answer.$save id: question.id
+    id = question.id
+    answer.$save { id }, _.partial @goToNextQuestion, id
 
   allowHtml: (data) ->
     @$sce.trustAsHtml data
