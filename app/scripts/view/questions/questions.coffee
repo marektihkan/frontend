@@ -50,10 +50,17 @@ QuestionsController = questions.classy.controller
     @$scope.questions = @questions
     @$state.go 'question.id', id: _.first(@questions).id
 
-  isLastQuestion: ->
+  getQuestionIndex: ->
     id = @$state.params.id
-    index = _.findIndex @questions, { id }
-    index is @questions.length - 1
+    _.findIndex @questions, { id }
+
+  getLastId: ->
+    index = @getQuestionIndex()
+    @questions[index - 1]?.id
+
+  getNextId: ->
+    index = @getQuestionIndex()
+    @questions[index + 1]?.id
 
   finish: ->
     @user.$finish =>
