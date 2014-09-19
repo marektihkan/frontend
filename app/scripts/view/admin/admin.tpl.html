@@ -51,7 +51,7 @@
                                           ,'btn-error'  : answer.valid == false}"> {{ $index }}</button>
 
                   <section data-ng-if="answer.$showMore">
-                    {{ answer.content }}
+                    <div data-question="question" data-answer="answer" disabled="true"></div>
                   </section>
                 </li>
               </ul>

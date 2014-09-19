@@ -1,5 +1,5 @@
-lodash        = require 'lodash'
-adminResource = require '../../resource/admin.coffee'
+adminResource     = require '../../resource/admin.coffee'
+questionDirective = require '../../directive/question/question.coffee'
 
 resultCalc = require '../../lib/result-calc.coffee'
 
