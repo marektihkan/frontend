@@ -10,16 +10,18 @@
       class="btn btn-warning pull-right"
     >Finish the test</button>
   </div>
-  <ul class="pagination">
-    <li  data-ng-class="{ disabled: !getLastId() }">
-      <a data-ui-sref="question.id({ id : getLastId() })"> &laquo; </a>
-    </li>
-    <li data-ng-repeat="question in questions" data-ng-class="{ active: isActive(question.id) }">
-      <a data-ui-sref="question.id({ id: question.id })">{{ $index + 1 }}</a>
-    </li>
-    <li data-ng-class="{ disabled: !getNextId() }">
-      <a data-ui-sref="question.id({ id : getNextId() })"> &raquo; </a>
-    </li>
-  </ul>
+  <div class="text-center">
+    <ul class="pagination">
+      <li  data-ng-class="{ disabled: !getLastId() }">
+        <a data-ui-sref="question.id({ id : getLastId() })"> &laquo; </a>
+      </li>
+      <li data-ng-repeat="question in questions" data-ng-class="{ active: isActive(question.id) }">
+        <a data-ui-sref="question.id({ id: question.id })">{{ $index + 1 }}</a>
+      </li>
+      <li data-ng-class="{ disabled: !getNextId() }">
+        <a data-ui-sref="question.id({ id : getNextId() })"> &raquo; </a>
+      </li>
+    </ul>
+  </div>
 </div>
 
