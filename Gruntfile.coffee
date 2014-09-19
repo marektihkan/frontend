@@ -48,7 +48,9 @@ module.exports = (grunt) ->
         ]
         dest: '<%= path.dist %>'
       fonts:
-        src: '<%= path.app %>/vendor/fontawesome/fonts'
+        expand: true
+        cwd: '<%= path.app %>/vendor/fontawesome/fonts'
+        src: '**/*'
         dest: '<%= path.dist %>/fonts'
 
     # For development mode we symlink the index.html and stylesheet files
