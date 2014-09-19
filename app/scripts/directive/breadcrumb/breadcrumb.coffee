@@ -1,6 +1,6 @@
 _            = require 'lodash'
 userResource = require '../../resource/user.coffee'
-runningtimer = require '../../view/running-timer/running-timer.coffee'
+runningtimer = require '../running-timer/running-timer.coffee'
 
 module.exports = breadcrumb = angular.module 'testlab.view.breadcrumb', [
   userResource.name

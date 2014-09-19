@@ -6,8 +6,8 @@ modules = [
   require './view/result/result.coffee'
   require './view/admin/admin.coffee'
 
-  require './view/breadcrumb/breadcrumb.coffee'
-  require './view/small-profile/small-profile.coffee'
+  require './directive/breadcrumb/breadcrumb.coffee'
+  require './directive/small-profile/small-profile.coffee'
 ].map (mod) -> mod.name
 
 angular.bootstrap document, modules
