@@ -1,20 +1,38 @@
 #results {
+  $bg: #e4e4e4;
+
+  .details, .result-separator {
+    background: $bg;
+  }
 
   .detailed-list {
+    background: $bg;
+
     li {
+      font-size: 16px;
       list-style: none;
       font-family: FontAwesome;
-      &.valid::before {
+
+      .btn {
+        padding:0;
+        margin: 0;
+      }
+
+      &.valid::before, &.invalid::before {
         display: inline-block;
+        float: left;
+        width: 20px;
+      }
+
+      &.valid::before {
         color: green;
         content: "\f00c";
       }
+
       &.invalid::before {
-        display: inline-block;
         color: red;
-        content: "\f00d"
+        content: "\f00d";
       }
     }
   }
-
 }

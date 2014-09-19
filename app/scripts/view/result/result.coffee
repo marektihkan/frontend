@@ -4,7 +4,10 @@ moment = require 'moment'
 resultResource = require '../../resource/result.coffee'
 userResource   = require '../../resource/user.coffee'
 
+questionDirective = require '../../directive/question/question.coffee'
+
 module.exports = result = angular.module 'testlab.view.result', [
+  questionDirective.name
   resultResource.name
   userResource.name
   'ui.router'

@@ -1,17 +1,36 @@
 <div id="results">
   <div class="jumbotron">
-    <h1>Your test results are here!</h1>
-    <p>
-    You answered total <strong>{{ getNumberAnswered(result) }}</strong> of <strong>{{ result.length }}</strong> questions. It took you total of <strong>{{ calculateTimeTaken(user) }} min</strong>
+    <h1>Your test results are submitted!</h1>
+    <p class="text-center">
+      You answered total <strong>{{ getNumberAnswered(result) }}</strong> of <strong>{{ result.length }}</strong> questions.
+      It took you total of <strong>{{ calculateTimeTaken(user) }} min.</strong>
     </p>
-    <ul class="detailed-list">
-      <li
-        data-ng-class="{ valid: isValid(question)
-                        ,invalid: isValid(question) == false }"
-        data-ng-repeat="question in result">
-      {{ question.name }}
-      </li>
-    </ul>
+    <div class="result-separator">
+      <button data-ng-click="$showDetails = !$showDetails"class="btn btn-link">Detailed results</button>
+      <i data-ng-if="!$showDetails" class="fa fa-angle-double-right"></i>
+      <i data-ng-if="$showDetails" class="fa fa-angle-double-down"></i>
+    </div>
+    <section data-ng-if="$showDetails" class="details">
+      <ul class="detailed-list">
+        <li
+          data-ng-class="{ valid: isValid(question)
+                          ,invalid: isValid(question) == false }"
+          data-ng-repeat="question in result | orderBy:'answer.valid'">
+          <button data-ng-if="question.answer"
+                  data-ng-click="question.$showDetails = !question.$showDetails"
+                  class="btn btn-link">
+                  {{ question.name }}
+                <i data-ng-if="!question.$showDetails" class="fa fa-angle-double-right"></i>
+                <i data-ng-if="question.$showDetails" class="fa fa-angle-double-down"></i>
+          </button>
+          <span data-ng-if="!question.answer"> {{ question.name }} </span>
+
+          <section data-ng-if="question.$showDetails" class="question-detail">
+            <section data-question="question" disabled="true" data-answer="question.answer"></section>
+          </section>
+        </li>
+      </ul>
+    </section>
   </div>
 </div>
 

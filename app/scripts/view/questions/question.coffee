@@ -1,13 +1,13 @@
-templates = require './templates/index.coffee'
-question  = require '../../resource/questions.coffee'
-answer    = require '../../resource/answer.coffee'
+questionDirective = require '../../directive/question/question.coffee'
+questionResource  = require '../../resource/questions.coffee'
+answerResource    = require '../../resource/answer.coffee'
 
 _ = require 'lodash'
 
 module.exports = question = angular.module 'testlab.view.question', [
-  question.name
-  answer.name
-  templates.name
+  questionDirective.name
+  questionResource.name
+  answerResource.name
   'classy'
   'ui.router'
   'ngSanitize'
