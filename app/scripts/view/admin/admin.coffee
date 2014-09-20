@@ -2,6 +2,7 @@ adminResource     = require '../../resource/admin.coffee'
 questionDirective = require '../../directive/question/question.coffee'
 
 resultCalc = require '../../lib/result-calc.coffee'
+timeTaken  = require '../../lib/time-taken.coffee'
 
 module.exports = admin = angular.module 'testlab.view.admin', [
   adminResource.name
@@ -22,6 +23,8 @@ AdminController = admin.classy.controller
     res = resultCalc(questions).toFixed 2
     res * 100
 
+  getTimeTaken: ({ startedAt, finishedAt} = {}) ->
+    timeTaken startedAt, finishedAt
 
 admin.config [ '$stateProvider', ($stateProvider) ->
   $stateProvider.state 'admin',

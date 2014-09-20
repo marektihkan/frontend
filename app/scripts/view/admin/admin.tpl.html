@@ -8,8 +8,9 @@
            alt="{{ user.avatar }}"
            class="avatar"/>
 
-      <section class="score">
+      <section class="score text-center">
         <h1>{{ calculateResult(user.questions) }}%</h1>
+        <span>{{ getTimeTaken(user)}} min</span>
       </section>
 
       <ul class="description">
