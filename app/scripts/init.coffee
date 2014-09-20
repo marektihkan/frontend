@@ -19,14 +19,28 @@ init.config [ '$httpProvider', '$injector', ($httpProvider, $injector) ->
   ]
 ]
 
-init.run [ 'User', 'Env', '$state', '$rootScope', (User, Env, $state, $rootScope) ->
-  User.get (user) ->
+init.run [ 'User', 'Env', '$state', '$rootScope', '$timeout', '$q', (User, Env, $state, $rootScope, $timeout, $q) ->
+
+  # Initial routing for the user
+  userPromise = User.get (user) ->
     path = 'profile'
     path = 'question' if user.isStarted
     path = 'result'   if user.finishedAt
     path = 'admin'    if user.admin
     $state.go path
 
-  Env.get (env) ->
+  envPromise = Env.get (env) ->
     $rootScope.title = env.title
+
+  # When our user starts the test
+  # lets make sure we keep track on his time and refresh the page
+  # when user timeleft reaches 0
+  $q.all([ userPromise.$promise, envPromise.$promise ]).then ([user, env]) ->
+    # If the user change happens lets start the state checking
+    $rootScope.$watch (-> user), ->
+      { startedAt, finishedAt, timeLeft } = user or {}
+      $timeout.cancel timerId
+      if startedAt and not finishedAt and timeLeft > 0
+        timerId = $timeout (-> location.reload()), timeLeft
+
 ]
