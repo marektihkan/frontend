@@ -6,7 +6,7 @@ sinon = require 'sinon'
 describe 'running timer', ->
   compile = null
   scope   = null
-  html    = '<div running-timer></div>'
+  html    = '<div running-timer="user"></div>'
 
   create = (tpl) ->
     el = compile(tpl) scope
@@ -18,42 +18,36 @@ describe 'running timer', ->
     compile = $compile
     scope   = $rootScope.$new()
 
-  it 'should compile to html', inject ($httpBackend) ->
-    $httpBackend.expectGET('/api/user').respond 200
+  it 'should compile to html', ->
     elm = create html
-    $httpBackend.flush()
     elm.should.be.ok
 
-  it 'should not render anything if user is not set', inject ($httpBackend) ->
-    $httpBackend.expectGET('/api/user').respond 400
+  it 'should not render anything if user is not set', ->
     elm = create html
-    $httpBackend.flush()
-    elm.children().length.should.not.be.ok
+    elm.children().length.should.be.not.ok
 
-  it 'should not render anything if the user has finished its test', inject ($httpBackend) ->
-    $httpBackend.expectGET('/api/user').respond { isStarted: true, finishedAt: true }
+  it 'should not render anything if the user has not started the test', ->
     elm = create html
-    $httpBackend.flush()
-    elm.children().length.should.not.be.ok
+    scope.$apply -> scope.user = startedAt: null
+    elm.children().length.should.be.not.ok
 
-  it 'should not render if the user no has started key', inject ($httpBackend) ->
-    $httpBackend.expectGET('/api/user').respond { isStarted: false }
+  it 'should not render anything if the user has finished the test', ->
     elm = create html
-    $httpBackend.flush()
-    elm.children().length.should.not.be.ok
+    scope.$apply -> scope.user = finishedAt: new Date()
+    elm.children().length.should.be.not.ok
 
-  it 'should render if the user has started key', inject ($httpBackend) ->
-    $httpBackend.expectGET('/api/user').respond { isStarted: true }
+  it 'should render if user is has started the test', ->
     elm = create html
-    $httpBackend.flush()
+    scope.$apply -> scope.user = startedAt: new Date()
     elm.children().length.should.be.ok
 
   describe 'state notifiers', ->
     element = null
-    beforeEach inject ($httpBackend) ->
-      $httpBackend.expectGET('/api/user').respond {}
+    scope   = null
+    beforeEach inject ->
+      scope.$apply -> scope.user = startedAt: new Date()
       element = create html
-      $httpBackend.flush()
+      scope = element.isolateScope()
 
     it 'should be critical if there are less than 2 minutes to go', ->
       res = scope.isCritical 1*60*1000

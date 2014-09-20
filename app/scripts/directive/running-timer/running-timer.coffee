@@ -1,8 +1,6 @@
-moment = require 'moment'
-user   = require '../../resource/user.coffee'
+moment       = require 'moment'
 
 module.exports = runningTimer = angular.module 'testlab.view.runningtimer', [
-  user.name
   'classy'
 ]
 
@@ -14,31 +12,28 @@ toMin = (ms) ->
 
 runningTimer.directive 'runningTimer', ->
   template: require './running-timer.tpl.html'
+  scope:
+    user: '=runningTimer'
+
   controller: runningTimer.classy.controller
     inject: [
       '$scope'
       '$timeout'
-      'User'
     ]
 
     watch:
-      'user': 'updateRunningTimer'
-
-    init: ->
-      @User.get (user) =>
-        @$scope.user = user
-
-    isStarted: ->
-      @$scope.user?.isStarted
+      user: 'updateRunningTimer'
 
     isFinished: ->
-      @$scope.user?.finishedAt
+      @$scope.user?.finishedAt or @$scope.user?.timeLeft is 0
+
+    isStarted: ->
+      @$scope.user?.startedAt
 
     updateRunningTimer: ->
       return if @timerId
       return if @isFinished()
-      return unless @$scope.user?.timeLeft?
-      return unless @isStarted()
+      return unless @$scope.user
       @$scope.user.timeLeft -= 1000
       @timerId = @$timeout =>
         @timerId = null
