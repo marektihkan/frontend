@@ -11,8 +11,20 @@ module.exports = (grunt) ->
   grunt.registerTask 'test', [ 'test:karma' ]
   grunt.registerTask 'test:karma', [ 'browserify:karma', 'karma:single' ]
   grunt.registerTask 'lint', [ 'coffeelint' ]
-  grunt.registerTask 'build', [ 'clean', 'browserify:dist', 'copy' ]
   grunt.registerTask 'build:dev', [ 'clean', 'symlink', 'concurrent:dev' ]
+  grunt.registerTask 'build', [
+    'clean'
+    'compass:build'
+    'copy'
+    'useminPrepare'
+    'browserify:dist'
+    'concat'
+    'uglify'
+    'cssmin'
+    'filerev'
+    'usemin'
+    'htmlmin'
+  ]
 
   grunt.initConfig
     path: paths
@@ -35,7 +47,27 @@ module.exports = (grunt) ->
         cssDir: '<%= path.app %>/styles'
       dev:
         options: watch: true
+      build:
+        options: watch: false
       files: 'main.scss'
+
+    htmlmin:
+      build:
+        options: collapseWhitespace: true
+        files: { '<%= path.dist %>/index.html' }
+
+    filerev:
+      dist:
+        src: [
+          '<%= path.dist %>/scripts/**/*.js'
+          '<%= path.dist %>/styles/**/*.css'
+        ]
+
+    useminPrepare:
+      html: '<%= path.app %>/index.html'
+
+    usemin:
+      html: '<%= path.dist %>/index.html'
 
     # For release we copy the files instead
     copy:

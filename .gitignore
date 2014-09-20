@@ -5,3 +5,4 @@ dist
 test/tmp/**
 app/vendor/**
 app/styles/*.css
+.tmp/**
