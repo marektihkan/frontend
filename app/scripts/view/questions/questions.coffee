@@ -2,15 +2,12 @@ userResource     = require '../../resource/user.coffee'
 questionResource = require '../../resource/questions.coffee'
 envResource      = require '../../resource/env.coffee'
 
-questionView     = require './question.coffee'
-
 _ = require 'lodash'
 
 module.exports = questions = angular.module 'testlab.view.questions', [
   userResource.name
   envResource.name
   questionResource.name
-  questionView.name
   'classy'
   'ui.router'
 ]

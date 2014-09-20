@@ -6,6 +6,7 @@ modules = [
   require './view/questions/questions.coffee'
   require './view/result/result.coffee'
   require './view/admin/admin.coffee'
+  require './view/question/question.coffee'
 
   require './directive/breadcrumb/breadcrumb.coffee'
   require './directive/small-profile/small-profile.coffee'
