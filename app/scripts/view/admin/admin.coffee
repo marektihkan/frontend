@@ -25,10 +25,12 @@ AdminController = admin.classy.controller
     @$scope.users = @users
     @$scope.orderExpression = []
 
-  keys: (target) ->
-    _(target).keys()
-             .filter (key) -> key.charAt(0) isnt '$'
-             .value()
+  getSortKeys: ->
+    [
+      'name'
+      'timeTaken'
+      'calculatedResult'
+    ]
 
 admin.config [ '$stateProvider', ($stateProvider) ->
   $stateProvider.state 'admin',

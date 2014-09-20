@@ -5,7 +5,13 @@
 
   <ul>
     <li data-ng-repeat="expression in orderExpression">
-    {{ expression }}
+    <button class="btn btn-link"
+            data-ng-switch="isAsc(expression)"
+            data-ng-click="toggleAsc(expression)">
+      {{ removeExcess(expression) }}
+      <i data-ng-if="!isAsc(expression)" class="fa fa-arrow-up"></i>
+      <i data-ng-if="isAsc(expression)" class="fa fa-arrow-down"></i>
+    </button>
     <button data-ng-click="removeFromOrder(expression)" class="btn btn-link remove-button">
       <i class="fa fa-minus"></i>
     </button>
