@@ -1,16 +1,28 @@
 <section id="admin">
   <h1>Finished users:</h1>
+
+  <div class="btn-group modify-nav">
+    <button type="button" data-ng-click="$showOrder = !$showOrder" class="btn btn-default">Order
+      <i data-ng-if="!$showOrder" class="fa fa-angle-double-right"></i>
+      <i data-ng-if="$showOrder" class="fa fa-angle-double-down"></i>
+    </button>
+    <button type="button" data-ng-click="$showFilter = !$showFilter" class="btn btn-default">Filter
+      <i data-ng-if="!$showFilter" class="fa fa-angle-double-right"></i>
+      <i data-ng-if="$showFilter" class="fa fa-angle-double-down"></i>
+    </button>
+  </div>
+
   <ul class="list-group">
     <li class="list-group-item user"
-        data-ng-repeat="user in users">
+        data-ng-repeat="user in users | orderBy:orderExpression">
 
       <img data-ng-src="{{ user.avatar }}"
            alt="{{ user.avatar }}"
            class="avatar"/>
 
       <section class="score text-center">
-        <h1>{{ calculateResult(user.questions) }}%</h1>
-        <span>{{ getTimeTaken(user)}} min</span>
+        <h1>{{ user.calculatedResult }} %</h1>
+        <span>{{ user.timeTaken }} min</span>
       </section>
 
       <ul class="description">
