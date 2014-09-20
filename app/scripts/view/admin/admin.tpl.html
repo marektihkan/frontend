@@ -49,7 +49,7 @@
                           data-ng-click="answer.$showMore = !answer.$showMore"
                           data-ng-class="{ 'btn-success': answer.valid == true
                                           ,'btn-default': answer.valid == null
-                                          ,'btn-error'  : answer.valid == false}"> {{ $index }}</button>
+                                          ,'btn-danger' : answer.valid == false}"> {{ $index }}</button>
 
                   <section data-ng-if="answer.$showMore">
                     <div data-question="question" data-answer="answer" disabled="true"></div>
