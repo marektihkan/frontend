@@ -32,7 +32,7 @@ question.config [ '$stateProvider', ($stateProvider) ->
       controller: QuestionController
       resolve:
         question: [ 'Question', '$q', '$stateParams', questionResolve ]
-        questions: [ 'Question', (Question) -> Question.list() ]
+        questions: [ 'Question', (Question) -> Question.list().$promise ]
 ]
 
 QuestionController = question.classy.controller

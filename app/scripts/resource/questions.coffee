@@ -27,7 +27,9 @@ class TransformableQuestion
       sorted = sortQuestion questions, env.groupOrder
       deffered.resolve sorted
 
-    deffered.promise.then successCb, errorCb
+    rawPromise = deffered.promise.then successCb, errorCb
+    rawPromise.$promise = deffered.promise
+    rawPromise
 
 questions.service 'Question', [ 'Env', '$resource', '$q', TransformableQuestion ]
 

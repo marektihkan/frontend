@@ -19,7 +19,9 @@ class CachedUser
 
   get: (successcb, errorcb) =>
     { promise } = @deffered or @fetch()
-    promise.then successcb, errorcb
+    rawPromise = promise.then successcb, errorcb
+    rawPromise.$promise = promise
+    rawPromise
 
   start: -> @User.start arguments...
 
