@@ -1,4 +1,4 @@
-sortQuestion = require '../../scripts/lib/sort-question.coffee'
+sortQuestion = require '../../app/scripts/lib/sort-question.coffee'
 
 describe 'sort questions', ->
   it 'should exist', ->

@@ -1,4 +1,4 @@
-resultCalc = require '../../scripts/lib/result-calc.coffee'
+resultCalc = require '../../app/scripts/lib/result-calc.coffee'
 
 describe 'result calculations', ->
   it 'should return 0 if no anwsers are given', ->

@@ -1,5 +1,5 @@
 helpers = require '../helpers.coffee'
-user    = require '../../scripts/resource/user.coffee'
+user    = require '../../app/scripts/resource/user.coffee'
 
 describe 'user factory', ->
   beforeEach helpers.module user.name

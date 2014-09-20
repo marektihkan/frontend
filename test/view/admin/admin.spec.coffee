@@ -1,1 +1,1 @@
-admin = require '../../../scripts/lib/result-calc.coffee'
+admin = require '../../../app/scripts/view/admin/admin.coffee'

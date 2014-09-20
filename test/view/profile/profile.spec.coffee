@@ -1,5 +1,5 @@
 helpers = require '../../helpers.coffee'
-profile = require '../../../scripts/view/profile/profile.coffee'
+profile = require '../../../app/scripts/view/profile/profile.coffee'
 
 sinon = require 'sinon'
 

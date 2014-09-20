@@ -6,3 +6,4 @@ test/tmp/**
 app/vendor/**
 app/styles/*.css
 .tmp/**
+test/tmp/test-bundle.js

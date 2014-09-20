@@ -1,5 +1,5 @@
 helpers = require '../../helpers.coffee'
-timer   = require '../../../scripts/view/running-timer/running-timer.coffee'
+timer   = require '../../../app/scripts/directive/running-timer/running-timer.coffee'
 
 sinon = require 'sinon'
 

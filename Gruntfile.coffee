@@ -136,12 +136,12 @@ module.exports = (grunt) ->
 
       karma:
         files:
-          '<%= path.app %>/test/tmp/test-bundle.js': [ '<%= path.app %>/test/**/*.spec.coffee']
+          'test/tmp/test-bundle.js': [ 'test/**/*.spec.coffee']
 
       karmaDev:
         options:
           watch     : true
           keepAlive : true
         files:
-          '<%= path.app %>/test/tmp/test-bundle.js': [ '<%= path.app %>/test/**/*.spec.coffee']
+          'test/tmp/test-bundle.js': [ 'test/**/*.spec.coffee']
 
