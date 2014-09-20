@@ -12,6 +12,14 @@
     </button>
   </div>
 
+  <section id="modify-data">
+    <div class="modify-container"
+         data-order-control="orderExpression"
+         data-ng-if="$showFilter"
+         data-keys="keys(user)">
+    </div>
+  </section>
+
   <ul class="list-group">
     <li class="list-group-item user"
         data-ng-repeat="user in users | orderBy:orderExpression">

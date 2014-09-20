@@ -1,0 +1,23 @@
+<div class="header">
+  <h1>Order rules:</h1>
+</div>
+
+<ul>
+  <li data-ng-repeat="expression in orderExpression">
+  {{ expression }}
+  <button data-ng-click="removeFromOrder(expression)" class="btn btn-link remove-button">
+    <i class="fa fa-minus"></i>
+  </button>
+  </li>
+</ul>
+
+<div class="input-group control-group">
+  <select data-ng-model="sortKey" class="form-control">
+    <option data-ng-repeat="key in keys() | filter:orderFilterFn track by $index ">{{ key }}</option>
+  </select>
+  <div class="input-group-btn control-trigger">
+    <button data-ng-click="addToOrder(sortKey)" class="btn btn-success">
+      <i class="fa fa-plus"></i>
+    </button>
+  </div>
+</div>

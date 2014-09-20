@@ -7,6 +7,10 @@
     width: $height;
   }
 
+  .modify-nav {
+    margin-bottom: 15px;
+  }
+
   .user {
     float: left;
     width: 100%;
@@ -48,6 +52,38 @@
       li {
         float: left;
         list-style: none;
+      }
+    }
+  }
+
+  #modify-data {
+    margin-bottom: 15px;
+    .modify-container {
+      @include border-radius(4px, 4px);
+      border: 1px solid #dddddd;
+      width: 270px;
+
+      .header h1 {
+        font-size: 14px;
+        margin: 10px;
+      }
+
+      .control-group {
+        width: 250px;
+        margin: 10px;
+      }
+
+      .remove-button {
+        color: #ff0000;
+        font-size: 10px;
+      }
+
+      .control-trigger {
+        button {
+          margin-left: 3px;
+          margin-top: 1px;
+          @include border-radius(4px, 4px);
+        }
       }
     }
   }
