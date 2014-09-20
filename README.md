@@ -1,4 +1,5 @@
-# Frontend for test-lab
+# Frontend for test-lab [![Build Status](https://secure.travis-ci.org/testing-lab/frontend.png?branch=master)](https://travis-ci.org/testing-lab/frontend)
+
 
 > The front end of test-lab application.
 
