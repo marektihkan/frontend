@@ -15,6 +15,11 @@
   <section id="modify-data">
     <div class="modify-container"
          data-order-control="orderExpression"
+         data-ng-if="$showOrder"
+         data-keys="keys(user)">
+    </div>
+    <div class="modify-container"
+         data-order-control="orderExpression"
          data-ng-if="$showFilter"
          data-keys="keys(user)">
     </div>
