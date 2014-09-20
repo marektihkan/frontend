@@ -45,6 +45,7 @@ module.exports = (grunt) ->
       options:
         sassDir: '<%= path.app %>/styles'
         cssDir: '<%= path.app %>/styles'
+        importPath: [ '<%= path.app %>/scripts' ]
       dev:
         options: watch: true
       build:

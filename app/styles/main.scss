@@ -5,14 +5,6 @@
 $border-radius-large: 4px;
 $background-color: #f5f5f5;
 
-@import 'view/small-profile';
-@import 'view/running-timer';
-@import 'view/breadcrumb';
-@import 'view/results';
-@import 'view/admin';
-@import 'view/question';
-@import 'view/login';
-
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -30,3 +22,11 @@ body{
   padding-top: 20px;
 }
 
+@import 'directive/small-profile/small-profile';
+@import 'directive/breadcrumb/breadcrumb';
+@import 'directive/question/question';
+@import 'directive/running-timer/running-timer';
+
+@import 'view/admin/admin';
+@import 'view/login/login';
+@import 'view/result/result';
