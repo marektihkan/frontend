@@ -1,6 +1,8 @@
 _      = require 'lodash'
 moment = require 'moment'
 
+resultCalc = require '../../lib/result-calc.coffee'
+
 resultResource = require '../../resource/result.coffee'
 userResource   = require '../../resource/user.coffee'
 
@@ -31,6 +33,10 @@ ResultController = result.classy.controller
 
   isValid: (question) ->
     question.answer?.valid
+
+  calculateResult: (questions) ->
+    res = resultCalc(questions).toFixed 2
+    res * 100
 
   calculateTimeTaken: ({ startedAt, finishedAt }) ->
     return if not startedAt or not finishedAt

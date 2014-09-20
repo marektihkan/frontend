@@ -1,9 +1,15 @@
 <div id="results">
   <div class="jumbotron">
-    <h1>Your test results are submitted!</h1>
+    <h1>Your results have been submitted</h1>
     <p class="text-center">
       You answered total <strong>{{ getNumberAnswered(result) }}</strong> of <strong>{{ result.length }}</strong> questions.
       It took you total of <strong>{{ calculateTimeTaken(user) }} min.</strong>
+    </p>
+    <p class="text-center">
+      Your calculated score is
+      <strong>
+        {{ calculateResult(result) }}%
+      </strong>
     </p>
     <div class="result-separator">
       <button data-ng-click="$showDetails = !$showDetails"class="btn btn-link">Detailed results</button>
