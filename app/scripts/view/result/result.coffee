@@ -1,7 +1,7 @@
 _      = require 'lodash'
-moment = require 'moment'
 
 resultCalc = require '../../lib/result-calc.coffee'
+timeTaken  = require '../../lib/time-taken.coffee'
 
 resultResource = require '../../resource/result.coffee'
 userResource   = require '../../resource/user.coffee'
@@ -38,12 +38,8 @@ ResultController = result.classy.controller
     res = resultCalc(questions).toFixed 2
     res * 100
 
-  calculateTimeTaken: ({ startedAt, finishedAt }) ->
-    return if not startedAt or not finishedAt
-    started  = moment startedAt
-    finished = moment finishedAt
-    duration = moment.duration finished.diff started
-    duration.minutes()
+  calculateTimeTaken: ({startedAt, finishedAt} = {}) ->
+    timeTaken startedAt, finishedAt
 
 result.config [ '$stateProvider', ($stateProvider) ->
   $stateProvider.state 'result',
