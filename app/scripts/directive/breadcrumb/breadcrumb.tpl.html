@@ -1,7 +1,7 @@
 <ol class="breadcrumb" id="breadcrumb">
   <li class="step">
   <button
-    data-ng-disabled="user"
+    data-ng-disabled="user.id"
     data-ng-class="{ current: isActive('login') }"
     data-ng-click="navigate('login')"
     class="btn btn-link">
@@ -10,7 +10,7 @@
   </li>
   <li class="step">
     <button
-      data-ng-disabled="!user.id"
+      data-ng-disabled="!user.id || isFinished(user) || isStarted(user)"
       data-ng-class="{ current: isActive('profile') }"
       data-ng-click="navigate('profile')"
       class="btn btn-link">
