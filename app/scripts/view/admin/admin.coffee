@@ -19,11 +19,11 @@ AdminController = admin.classy.controller
     'users'
   ]
 
-  orderExpression: null
-
   init: ->
     @$scope.users = @users
-    @$scope.orderExpression = []
+    @$scope.orderExpression = [
+      '!calculatedResult'
+    ]
 
   getSortKeys: ->
     [
