@@ -17,5 +17,10 @@
         class="btn btn-success"
         >Save</button>
     </div>
+    <button
+      data-ng-click="finish(question, answer)"
+      data-ng-if="!getNextId()"
+      class="btn btn-warning pull-right"
+    >Save and finish</button>
   </div>
 </section>

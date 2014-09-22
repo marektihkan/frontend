@@ -31,8 +31,9 @@ question.config [ '$stateProvider', ($stateProvider) ->
       template: require './question.tpl.html'
       controller: QuestionController
       resolve:
-        question: [ 'Question', '$q', '$stateParams', questionResolve ]
-        questions: [ 'Question', (Question) -> Question.list().$promise ]
+        user      : ['User', (User) -> User.get().$promise ]
+        question  : [ 'Question', '$q', '$stateParams', questionResolve ]
+        questions : [ 'Question', (Question) -> Question.list().$promise ]
 ]
 
 QuestionController = question.classy.controller
@@ -42,6 +43,7 @@ QuestionController = question.classy.controller
     '$sce'
     'question'
     'questions'
+    'user'
     'Answer'
   ]
 
@@ -55,9 +57,16 @@ QuestionController = question.classy.controller
     return unless nextId
     @$state.go 'question.id', id: nextId
 
+  saveAnswer: ({ id }, answer, cb) ->
+    answer.$save { id }, cb
+
   submitAnswer: (question, answer) ->
-    id = question.id
-    answer.$save { id }, _.partial @goToNextQuestion, id
+    @saveAnswer question, answer, _.partial @goToNextQuestion, question.id
+
+  finish: (question, answer) ->
+    @saveAnswer question, answer, =>
+      @user.$finish =>
+        @$state.go 'result'
 
   allowHtml: (data) ->
     @$sce.trustAsHtml data

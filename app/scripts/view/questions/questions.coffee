@@ -30,7 +30,6 @@ questions.config [ '$stateProvider', ($stateProvider) ->
       controller: QuestionsController
       resolve:
         questions: [ 'Question', (Question) -> Question.list().$promise ]
-        user: [ 'User', '$q', userResolve ]
         env: [ 'Env', (Env) -> Env.get().$promise ]
 ]
 
@@ -39,7 +38,6 @@ QuestionsController = questions.classy.controller
     '$scope'
     '$state'
     'questions'
-    'user'
     'env'
   ]
 
@@ -58,10 +56,6 @@ QuestionsController = questions.classy.controller
   getNextId: ->
     index = @getQuestionIndex()
     @questions[index + 1]?.id
-
-  finish: ->
-    @user.$finish =>
-      @$state.go 'result'
 
   isActive: (id) ->
     @$state.params.id is id
