@@ -10,4 +10,5 @@ module.exports = (questions = []) ->
   return 0 if correct.length is 0
   sumAnswerable = _.reduce answerable, sumByCoenfiecent, 0
   sumCorrect    = _.reduce correct, sumByCoenfiecent, 0
-  sumCorrect / sumAnswerable
+  result = sumCorrect / sumAnswerable
+  (result*100).toFixed 2

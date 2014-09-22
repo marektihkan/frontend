@@ -15,7 +15,7 @@ describe 'result calculations', ->
     res = resultCalc [ question ]
     res.should.eql 1
 
-  it 'should return .5 if 50% of anwsers are answered', ->
+  it 'should return 50 if 50% of anwsers are answered', ->
     questions = [
       {
         expectedAnswer: true
@@ -28,7 +28,7 @@ describe 'result calculations', ->
       }
     ]
     res = resultCalc questions
-    res.should.eql .5
+    res.should.eql 50.toFixed 2
 
   it 'should take coenficent to account', ->
     questions = [
@@ -43,7 +43,7 @@ describe 'result calculations', ->
       }
     ]
     res = resultCalc questions
-    res.should.eql 1/3
+    res.should.eql (1/3*100).toFixed 2
 
   it 'should take coenficent to account and return 100% if all questions are correct', ->
     questions = [

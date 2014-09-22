@@ -34,9 +34,7 @@ ResultController = result.classy.controller
   isValid: (question) ->
     question.answer?.valid
 
-  calculateResult: (questions) ->
-    res = resultCalc(questions).toFixed 2
-    res * 100
+  calculateResult: resultCalc
 
   calculateTimeTaken: ({startedAt, finishedAt} = {}) ->
     timeTaken startedAt, finishedAt
