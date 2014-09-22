@@ -22,10 +22,6 @@ body{
   padding-top: 20px;
 }
 
-.wrapped-question {
-  white-space: pre-wrap;
-}
-
 @import 'directive/small-profile/small-profile';
 @import 'directive/breadcrumb/breadcrumb';
 @import 'directive/running-timer/running-timer';
