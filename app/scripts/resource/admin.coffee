@@ -12,11 +12,13 @@ admin.factory 'Admin', [ '$resource', ($resource) ->
       url: 'api/admin/users'
       cache: false
       transformResponse: (data) ->
-        parsed = JSON.parse data
-        _.map parsed, (user) ->
-          user.calculatedResult = resultCalc user.questions
-          user.timeTaken        = timeTaken user.startedAt, user.finishedAt
-          user
+        try
+          parsed = JSON.parse data
+          _.map parsed, (user) ->
+            user.calculatedResult = resultCalc user.questions
+            user.timeTaken        = timeTaken user.startedAt, user.finishedAt
+            user
+        catch ignored
 
     overview:
       url: 'api/admin/overview'
