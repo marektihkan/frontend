@@ -10,7 +10,7 @@ module.exports = questions = angular.module 'testlab.questions', [
 
 class TransformableQuestion
   constructor: (@Env, $resource, @$q) ->
-    @Questions = $resource '/api/questions', { },
+    @Questions = $resource 'api/questions', { },
       list:
         method: 'GET'
         isArray: true

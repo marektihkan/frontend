@@ -7,7 +7,7 @@
     <ul class="login">
       <li data-ng-repeat="login in env.logins">
         <a class="btn btn-lg btn-primary"
-          data-ng-href="/auth/{{ toLowerCase(login) }}">
+          data-ng-href="auth/{{ toLowerCase(login) }}">
             <i class="fa fa-{{ toLowerCase(login) }}"> </i> {{ login }} </a>
       </li>
     </ul>

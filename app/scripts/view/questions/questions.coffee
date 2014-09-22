@@ -25,7 +25,7 @@ questions.config [ '$stateProvider', ($stateProvider) ->
     deffered.promise
 
   $stateProvider.state 'question',
-      url: '/question'
+      url: 'question'
       template: require './questions.tpl.html'
       controller: QuestionsController
       resolve:

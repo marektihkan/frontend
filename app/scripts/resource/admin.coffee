@@ -6,10 +6,10 @@ timeTaken  = require '../lib/time-taken.coffee'
 module.exports = admin = angular.module 'testlab.admin', [ 'ngResource' ]
 
 admin.factory 'Admin', [ '$resource', ($resource) ->
-  $resource '/api/admin', { },
+  $resource 'api/admin', { },
     users:
       isArray: true
-      url: '/api/admin/users'
+      url: 'api/admin/users'
       cache: false
       transformResponse: (data) ->
         parsed = JSON.parse data
@@ -19,5 +19,5 @@ admin.factory 'Admin', [ '$resource', ($resource) ->
           user
 
     overview:
-      url: '/api/admin/overview'
+      url: 'api/admin/overview'
 ]
