@@ -68,5 +68,8 @@ QuestionController = question.classy.controller
       @user.$finish =>
         @$state.go 'result'
 
+  currentPage: ->
+    @$state.params.id
+
   allowHtml: (data) ->
     @$sce.trustAsHtml data

@@ -2,12 +2,15 @@ userResource     = require '../../resource/user.coffee'
 questionResource = require '../../resource/questions.coffee'
 envResource      = require '../../resource/env.coffee'
 
+paginationDirective = require '../../directive/pagination/pagination.coffee'
+
 _ = require 'lodash'
 
 module.exports = questions = angular.module 'testlab.view.questions', [
   userResource.name
   envResource.name
   questionResource.name
+  paginationDirective.name
   'classy'
   'ui.router'
 ]
@@ -29,8 +32,8 @@ questions.config [ '$stateProvider', ($stateProvider) ->
       template: require './questions.tpl.html'
       controller: QuestionsController
       resolve:
-        questions: [ 'Question', (Question) -> Question.list().$promise ]
-        env: [ 'Env', (Env) -> Env.get().$promise ]
+        questions : [ 'Question', (Question) -> Question.list().$promise ]
+        env       : [ 'Env', (Env) -> Env.get().$promise ]
 ]
 
 QuestionsController = questions.classy.controller
@@ -59,3 +62,8 @@ QuestionsController = questions.classy.controller
 
   isActive: (id) ->
     @$state.params.id is id
+
+  changePage: (index) ->
+    { id } = @questions[index] or {}
+    return unless id
+    @$state.go 'question.id', { id }
