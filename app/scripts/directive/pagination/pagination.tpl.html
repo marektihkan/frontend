@@ -3,11 +3,12 @@
     <a href="javascript:void(0)"
        data-ng-click="changePage(0)"> first </a>
   </li>
-  <li  data-ng-class="{ disabled: !hasPrev() }">
+  <li data-ng-class="{ disabled: !hasPrev() }">
     <a href="javascript:void(0)"
        data-ng-click="changePage(currentPage() - 1)"> &laquo; </a>
   </li>
   <li data-ng-repeat="_ in range(maxItems) track by $index"
+      class="page-nr"
       data-ng-class="{ active: currentPage()==getCalculatedPageNr($index) }">
     <a href="javascript:void(0)"
        data-ng-click="changePage(getCalculatedPageNr($index))">
