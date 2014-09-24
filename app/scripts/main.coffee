@@ -1,3 +1,8 @@
+pace = require 'pace'
+pace.start
+  document: false
+  ghostTime: 200
+
 modules = [
   require './init.coffee'
 
