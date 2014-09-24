@@ -10,7 +10,7 @@
     <section data-question="question" data-answer="answer"></section>
   </div>
 
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-sm-6">
       <button
         data-ng-click="submitAnswer(question, answer)"
@@ -20,7 +20,7 @@
     <button
       data-ng-click="finish(question, answer)"
       data-ng-if="!getNextId()"
-      class="btn btn-warning pull-right"
+      class="btn btn-warning pull-right btn-finish"
     >Save and finish</button>
   </div>
 </section>
