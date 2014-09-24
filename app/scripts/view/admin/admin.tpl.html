@@ -42,12 +42,12 @@
         </li>
         <li> {{ user.email }} </li>
         <li>
-          <button class="btn btn-default"
-                  data-ng-click="user.$showMore = !user.$showMore"
-                  data-ng-switch="user.$showMore">
+          <a class="btn btn-link btn-details"
+             data-ng-click="user.$showMore = !user.$showMore"
+             data-ng-switch="user.$showMore">
                     <span data-ng-switch-when="true">Hide details</span>
                     <span data-ng-switch-default>Show details</span>
-          </button>
+          </a>
         </li>
       </ul>
 
