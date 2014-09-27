@@ -24,16 +24,21 @@
     <li class="list-group-item user"
         data-ng-repeat="user in users | orderBy:orderExpression">
 
-      <img data-ng-src="{{ user.avatar }}"
-           alt="{{ user.avatar }}"
-           class="avatar"/>
-
       <section class="score text-center">
         <h1>{{ user.calculatedResult }} %</h1>
         <span class="pull-right">{{ user.timeTaken }} min</span>
       </section>
 
       <ul class="description">
+        <li class="visible">
+          <input type="checkbox"
+                 data-ng-change="toggleHidden(user)"
+                 data-ng-model="user.meta.hidden">
+        </li>
+        <li class="avatar">
+          <img data-ng-src="{{ user.avatar }}" alt="{{ user.avatar }}"/>
+        </li>
+
         <li class="name">
           <h2>
             <a target="_blank"

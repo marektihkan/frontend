@@ -1,12 +1,6 @@
 #admin {
   $height: 65px;
 
-  .avatar {
-    float: left;
-    height: $height;
-    width: $height;
-  }
-
   .modify-nav {
     display: inline-block;
     margin-bottom: 15px;
@@ -27,10 +21,25 @@
       }
     }
 
+
     ul.description {
       height: $height;
       list-style: none;
-      margin-left: 35px;
+      padding-left: 0;
+
+      .visible {
+        height: $height;
+        line-height: 4.5;
+        width: 30px;
+        float: left;
+      }
+
+      li.avatar, img {
+        margin-right : 10px;
+        height       : $height;
+        width        : $height;
+        float        : left;
+      }
 
       .name h2 {
         margin: 0;

@@ -32,6 +32,9 @@ AdminController = admin.classy.controller
       'calculatedResult'
     ]
 
+  toggleHidden: (user) ->
+    user.$update()
+
 admin.config [ '$stateProvider', ($stateProvider) ->
   $stateProvider.state 'admin',
     url: '/admin'
