@@ -94,3 +94,19 @@ describe 'pagination', ->
     res  = create html
     text = +res.find('li.page-nr').last().text()
     text.should.eql 11
+
+  it 'should show the correct start numbers if totalItems is lower than maxItems', ->
+    scope.total = 4
+    scope.maxItems = 10
+    scope.getPage = -> 1
+    res  = create html
+    text = +res.find('li.page-nr').first().text()
+    text.should.eql 1
+
+  it 'should show the correct end numbers if totalItems is lower than maxItems', ->
+    scope.total = 4
+    scope.maxItems = 10
+    scope.getPage = -> 1
+    res  = create html
+    text = +res.find('li.page-nr').last().text()
+    text.should.eql 4

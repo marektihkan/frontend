@@ -16,7 +16,7 @@ PaginationController = pagination.classy.controller
 
   getCalculatedPageNr: (nr) ->
     currentPage = @$scope.currentPage()
-    return nr if @$scope.maxItems is @$scope.totalItems
+    return nr if @$scope.maxItems > @$scope.totalItems
     median = Math.floor @$scope.maxItems / 2
     if currentPage + median > @$scope.totalItems
       @$scope.totalItems + nr - @$scope.maxItems
