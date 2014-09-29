@@ -5,7 +5,7 @@ module.exports = question = angular.module 'testlab.directive.question', [
 ]
 
 question.directive 'question', ->
-  template: '<section data-ng-include="question.type"></section>'
+  template: require './questionWrapper.tpl.html'
   scope:
     question : '='
     answer   : '='
