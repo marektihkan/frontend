@@ -1,6 +1,10 @@
-<div class="radio" data-ng-repeat="(key, val) in question.variants">
+<div class="radio" data-ng-repeat="(key, val) in question.content">
   <label>
-   	<input type="radio" data-ng-disabled="disabled" data-ng-model="answer.content[key]" ng-value="key" name="key">
+   	<input type="radio"
+           data-ng-disabled="disabled"
+           data-ng-model="answer.content"
+           data-ng-value="key"
+           name="key">
    	{{ val }}
   </label>
 </div>
