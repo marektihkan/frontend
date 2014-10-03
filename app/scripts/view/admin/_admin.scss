@@ -36,8 +36,8 @@
 
       li.avatar, img {
         margin-right : 10px;
-        height       : $height;
-        width        : $height;
+        max-height   : $height;
+        max-width    : $height;
         float        : left;
       }
 
