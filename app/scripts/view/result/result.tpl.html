@@ -5,7 +5,7 @@
       You answered total <strong>{{ getNumberAnswered(result) }}</strong> of <strong>{{ result.length }}</strong> questions.
       It took you total of <strong>{{ calculateTimeTaken(user) }} min.</strong>
     </p>
-    <p class="text-center">
+    <p class="text-center" data-ng-if="showScore()">
       Your calculated score is
       <strong>
         {{ calculateResult(result) }}%

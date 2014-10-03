@@ -20,6 +20,7 @@ ResultController = result.classy.controller
   inject: [
     '$scope'
     'result'
+    'env'
   ]
 
   init: ->
@@ -34,6 +35,9 @@ ResultController = result.classy.controller
   isValid: (question) ->
     question.answer?.valid
 
+  showScore: ->
+    @env.showScore isnt false
+
   calculateResult: resultCalc
 
   calculateTimeTaken: ({startedAt, finishedAt} = {}) ->
@@ -47,4 +51,5 @@ result.config [ '$stateProvider', ($stateProvider) ->
     resolve:
       result : [ 'Result', (Result) -> Result.get().$promise ]
       user   : [ 'User', (User) -> User.get().$promise ]
+      env    : [ 'Env', (Env) -> Env.get().$promise ]
 ]
