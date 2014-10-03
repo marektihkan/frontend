@@ -76,7 +76,7 @@
                                           ,'btn-default': answer.valid == null
                                           ,'btn-danger' : answer.valid == false}"> {{ $index }}</button>
 
-                  <section data-ng-if="answer.$showMore">
+                  <section data-ng-if="canShowAnswer(answer.$showMore, $last)">
                     <div data-question="question" data-answer="answer" disabled="true"></div>
                   </section>
                 </li>

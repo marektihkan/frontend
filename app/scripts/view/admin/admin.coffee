@@ -32,6 +32,10 @@ AdminController = admin.classy.controller
       'calculatedResult'
     ]
 
+  canShowAnswer: (isShown, isLast) ->
+    return isShown if isShown
+    isLast and not isShown?
+
   toggleHidden: (user) ->
     user.$update()
 
