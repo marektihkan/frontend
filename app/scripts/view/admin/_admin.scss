@@ -34,11 +34,16 @@
         float: left;
       }
 
-      li.avatar, img {
+      li.avatar {
+        float: left;
+        height: $height;
+        width: $height;
         margin-right : 10px;
-        max-height   : $height;
-        max-width    : $height;
-        float        : left;
+        img {
+          max-height   : $height;
+          max-width    : $height;
+          float        : left;
+        }
       }
 
       .name h2 {
