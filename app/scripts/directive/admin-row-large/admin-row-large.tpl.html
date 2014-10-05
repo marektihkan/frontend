@@ -1,0 +1,61 @@
+<section class="score text-center">
+  <h1>{{ user.calculatedResult }} %</h1>
+  <span class="pull-right">{{ user.timeTaken }} min</span>
+</section>
+
+<ul class="description">
+  <li class="visible">
+    <input type="checkbox"
+           data-ng-change="toggleHidden(user)"
+           data-ng-model="user.meta.hidden">
+  </li>
+  <li class="avatar">
+    <img data-ng-src="{{ user.avatar }}" alt="{{ user.avatar }}"/>
+  </li>
+
+  <li class="name">
+    <h2>
+      <a target="_blank"
+         data-ng-href="{{user.url}}">{{ user.name }}</a>
+    </h2>
+  </li>
+  <li> {{ user.email }} </li>
+  <li>
+    <a class="btn btn-link btn-details"
+       data-ng-click="user.$showMore = !user.$showMore"
+       data-ng-switch="user.$showMore">
+              <span data-ng-switch-when="true">Hide details</span>
+              <span data-ng-switch-default>Show details</span>
+    </a>
+  </li>
+</ul>
+
+<section data-ng-if="user.$showMore">
+  <h2>details for {{ user.name }}</h2>
+  <ul>
+    <li class="question" data-ng-repeat="question in user.questions | orderBy:'answers.length':true">
+      <button data-ng-click="question.$showMore = !question.$showMore"
+              data-ng-disabled="!question.answers.length"
+              class="btn btn-link show-more">
+        <span class="name"> {{ question.name }} </span>
+      </button>
+      <span class="answers" data-ng-if="question.answers.length">( {{ question.answers.length }} )</span>
+
+      <section data-ng-if="question.$showMore">
+        <ul class="answers-list">
+          <li data-ng-repeat="answer in question.answers">
+            <button class="btn"
+                    data-ng-click="answer.$showMore = !answer.$showMore"
+                    data-ng-class="{ 'btn-success': answer.valid == true
+                                    ,'btn-default': answer.valid == null
+                                    ,'btn-danger' : answer.valid == false}"> {{ $index }}</button>
+
+            <section data-ng-if="canShowAnswer(answer.$showMore, $last)">
+              <div data-question="question" data-answer="answer" disabled="true"></div>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+  </ul>
+</section>

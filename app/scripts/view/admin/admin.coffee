@@ -1,14 +1,16 @@
 _ = require 'lodash'
 
-adminResource     = require '../../resource/admin.coffee'
+adminResource = require '../../resource/admin.coffee'
 
-orderControlDirective = require '../../directive/order-control/order-control.coffee'
-questionDirective     = require '../../directive/question/question.coffee'
+orderControlDirective  = require '../../directive/order-control/order-control.coffee'
+questionDirective      = require '../../directive/question/question.coffee'
+adminRowLargeDirective = require '../../directive/admin-row-large/admin-row-large.coffee'
 
 module.exports = admin = angular.module 'testlab.view.admin', [
   adminResource.name
   orderControlDirective.name
   questionDirective.name
+  adminRowLargeDirective.name
   'classy'
   'ui.router'
 ]
@@ -31,13 +33,6 @@ AdminController = admin.classy.controller
       'timeTaken'
       'calculatedResult'
     ]
-
-  canShowAnswer: (isShown, isLast) ->
-    return isShown if isShown
-    isLast and not isShown?
-
-  toggleHidden: (user) ->
-    user.$update()
 
 admin.config [ '$stateProvider', ($stateProvider) ->
   $stateProvider.state 'admin',
