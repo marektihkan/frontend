@@ -40,6 +40,7 @@ QuestionsController = questions.classy.controller
   inject: [
     '$scope'
     '$state'
+    '$window'
     'questions'
     'env'
   ]
@@ -63,7 +64,14 @@ QuestionsController = questions.classy.controller
   isActive: (id) ->
     @$state.params.id is id
 
+  validatePageChange: ->
+    # isQuestionDrity is changed directly from question subview.
+    # Yep, so that happens.
+    return true unless @$scope.isQuestionDirty
+    @$window.confirm 'Your changes will be lost. Are you sure?'
+
+
   changePage: (index) ->
     { id } = @questions[index] or {}
     return unless id
-    @$state.go 'question.id', { id }
+    @$state.go 'question.id', { id } if @validatePageChange()

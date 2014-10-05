@@ -40,12 +40,13 @@ QuestionController = question.classy.controller
   inject: [
     '$scope'
     '$state'
-    '$sce'
     'question'
     'questions'
     'user'
     'Answer'
   ]
+  watch:
+    'questionForm.$dirty': 'propagateFormState'
 
   init: ->
     @$scope.question = @question
@@ -71,5 +72,5 @@ QuestionController = question.classy.controller
   currentPage: ->
     @$state.params.id
 
-  allowHtml: (data) ->
-    @$sce.trustAsHtml data
+  propagateFormState: (dirty) ->
+    @$scope.$parent.isQuestionDirty = dirty

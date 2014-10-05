@@ -3,8 +3,11 @@
     <h2>{{ question.name }}</h2>
   </div>
 
+
   <div class="form-group col-md-12">
-    <section data-question="question" data-answer="answer"></section>
+    <div data-ng-form="questionForm" novalidate>
+      <section data-question="question" data-answer="answer"></section>
+    </div>
   </div>
 
   <div class="form-group row">
