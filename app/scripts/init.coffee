@@ -11,11 +11,16 @@ module.exports = init = angular.module 'testlab.init', [
 init.config [ '$httpProvider', '$injector', ($httpProvider, $injector) ->
   $state = null
   $httpProvider.interceptors.push [ '$q', '$injector', ($q, $injector) ->
-     'responseError': (response) ->
-       if response.status is 403
-         $state ?= $injector.get '$state'
-         $state.go 'login'
-       $q.reject response
+    'responseError': (response) ->
+      if response.status is 403
+        $state ?= $injector.get '$state'
+        current = $state.current.name
+        $state.go 'login'
+        # If forsome reason we are logged out and the current state isnt login
+        # then lets force refresh the page. This can happen if the server refreshes.
+        if current and current isnt 'login'
+          document.location = '/'
+      $q.reject response
   ]
 ]
 
