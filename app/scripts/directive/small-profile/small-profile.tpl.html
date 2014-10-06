@@ -9,9 +9,9 @@
   </section>
   <section data-ng-if="user.admin" class="admin colored">
     <ul class="list-group">
-      <li class="list-group-item">
-        <span class="badge">{{ overview.finished }}</span>
-        tests finished
+      <li class="list-group-item" data-ng-repeat="(key, val) in overview">
+      <span class="badge">{{ val }}</span>
+      {{ key }}
       </li>
     </ul>
     <a class="btn btn-xs btn-info" data-ui-sref="admin"> Admin console </a>
