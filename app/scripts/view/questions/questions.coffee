@@ -70,7 +70,6 @@ QuestionsController = questions.classy.controller
     return true unless @$scope.isQuestionDirty
     @$window.confirm 'Your changes will be lost. Are you sure?'
 
-
   changePage: (index) ->
     { id } = @questions[index] or {}
     return unless id
