@@ -34,4 +34,8 @@ admin.factory 'Admin', [ '$resource', ($resource) ->
           parsed = JSON.parse data
           _.map parsed, addFields
         catch ignored
+
+    remove:
+      url    : 'api/admin/user/:id'
+      method : 'DELETE'
 ]

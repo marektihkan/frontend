@@ -34,6 +34,9 @@ AdminController = admin.classy.controller
       'calculatedResult'
     ]
 
+  hasId: (user) ->
+    user.id?
+
 admin.config [ '$stateProvider', ($stateProvider) ->
   $stateProvider.state 'admin',
     url: '/admin'

@@ -4,11 +4,6 @@
 </section>
 
 <ul class="description">
-  <li class="visible">
-    <input type="checkbox"
-           data-ng-change="toggleHidden(user)"
-           data-ng-model="user.meta.hidden">
-  </li>
   <li class="avatar">
     <img data-ng-src="{{ user.avatar }}" alt="{{ user.avatar }}"/>
   </li>
@@ -27,8 +22,21 @@
               <span data-ng-switch-when="true">Hide details</span>
               <span data-ng-switch-default>Show details</span>
     </a>
+    <a class="btn btn-link btn-details"
+       data-ng-click="user.$showControls = !user.$showControls"
+       data-ng-switch="user.$showControls">
+              <span data-ng-switch-when="true">Hide controls</span>
+              <span data-ng-switch-default>Show controls</span>
+  </a>
   </li>
 </ul>
+
+<section data-ng-if="user.$showControls">
+  <h2>controls for {{ user.name }}</h2>
+  <ul>
+    <li><button data-ng-click="remove(user)" class="btn btn-danger">Remove user</button></li>
+  </ul>
+</section>
 
 <section data-ng-if="user.$showMore">
   <h2>details for {{ user.name }}</h2>

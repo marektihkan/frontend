@@ -5,6 +5,7 @@ module.exports = adminRowLarge = angular.module 'test-lab.directive.admin-row-la
 AdminRowController = adminRowLarge.classy.controller
   inject: [
     '$scope'
+    '$window'
   ]
 
   canShowAnswer: (isShown, isLast) ->
@@ -13,6 +14,10 @@ AdminRowController = adminRowLarge.classy.controller
 
   toggleHidden: (user) ->
     user.$update()
+
+  remove: (user) ->
+    if @$window.confirm 'Are you sure? This cannot be undone.'
+      user.$remove()
 
 adminRowLarge.directive 'adminRowLarge', ->
   template   : require './admin-row-large.tpl.html'

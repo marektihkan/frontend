@@ -22,7 +22,7 @@
 
   <ul class="list-group">
     <li class="list-group-item user"
-        data-ng-repeat="user in users | orderBy:orderExpression">
+        data-ng-repeat="user in users | filter:hasId | orderBy:orderExpression">
         <div admin-row-large="user"></div>
     </li>
   </ul>
