@@ -34,7 +34,15 @@
 <section data-ng-if="user.$showControls">
   <h2>controls for {{ user.name }}</h2>
   <ul>
-    <li><button data-ng-click="remove(user)" class="btn btn-danger">Remove user</button></li>
+    <li>
+      <button data-ng-click="remove(user)" class="btn btn-danger">Remove user</button>
+    </li>
+    <li>
+      <button data-ng-click="hide(user)" class="btn">
+        <span data-ng-if="!user.meta.hidden">Show</span>
+        <span data-ng-if="user.meta.hidden">Hide</span>
+      </button>
+    </li>
   </ul>
 </section>
 

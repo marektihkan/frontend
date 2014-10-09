@@ -19,6 +19,11 @@ AdminRowController = adminRowLarge.classy.controller
     if @$window.confirm 'Are you sure? This cannot be undone.'
       user.$remove()
 
+  hide: (user) ->
+    user.meta ?= {}
+    user.meta.hidden = not user.meta.hidden
+    user.$update()
+
 adminRowLarge.directive 'adminRowLarge', ->
   template   : require './admin-row-large.tpl.html'
   controller : AdminRowController

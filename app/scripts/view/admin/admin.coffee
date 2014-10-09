@@ -37,6 +37,12 @@ AdminController = admin.classy.controller
   hasId: (user) ->
     user.id?
 
+  isHidden: (user) ->
+    user.meta?.hidden is true
+
+  isShown: (user) ->
+    not @isHidden user
+
 admin.config [ '$stateProvider', ($stateProvider) ->
   $stateProvider.state 'admin',
     url: '/admin'
