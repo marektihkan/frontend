@@ -22,7 +22,7 @@
 
   <ul class="list-group">
     <li class="list-group-item user"
-        data-ng-repeat="user in users | filter:hasId | filter:isHidden:true | orderBy:orderExpression">
+        data-ng-repeat="user in users | filter:hasId | filter:isShown | orderBy:orderExpression">
         <div admin-row-large="user"></div>
     </li>
   </ul>
@@ -35,7 +35,7 @@
   </h3>
   <ul class="list-group" data-ng-if="$showHidden">
     <li class="list-group-item user"
-        data-ng-repeat="user in users | filter:hasId | filter:isShown | orderBy:orderExpression">
+        data-ng-repeat="user in users | filter:hasId | filter:isHidden | orderBy:orderExpression">
         <div admin-row-large="user"></div>
     </li>
   </ul>
