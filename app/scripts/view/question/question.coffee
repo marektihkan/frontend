@@ -50,8 +50,7 @@ QuestionController = question.classy.controller
 
   init: ->
     @$scope.question = @question
-    @$scope.answer   = @Answer.get (id: @$state.params.id), (answer) =>
-      answer.content = @question.content unless answer.content?
+    @$scope.answer   = @Answer.get id: @$state.params.id
 
   goToNextQuestion: (id) ->
     index  = _.findIndex @questions, { id }
