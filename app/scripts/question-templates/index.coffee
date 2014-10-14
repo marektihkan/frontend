@@ -5,6 +5,7 @@ TEMPLATES =
   'radio'    : require './radio.tpl.html'
   'picture'  : require './picture.tpl.html'
   'code'     : require './code.tpl.html'
+  'editor'   : require './editor.tpl.html'
 
 module.exports = questionTemplates = angular.module 'testlab.view.question.templates', [
   'ui.codemirror'
